@@ -6,6 +6,7 @@ import org.w3c.dom.NodeList
 import org.xml.sax.InputSource
 import java.io.StringReader
 import java.net.URL
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.xml.parsers.DocumentBuilder
@@ -40,12 +41,12 @@ object SatelliteDataList {
         val name = getElementContent(xmlElement, "OBJECT_NAME")
         val id = getElementContent(xmlElement, "OBJECT_ID")
         val epoch = parseDate(getElementContent(xmlElement, "EPOCH"))
-        val mean_motion = getElementContent(xmlElement, "MEAN_MOTION") as Double
-        val eccentricity = getElementContent(xmlElement, "ECCENTRICITY") as Double
-        val inclination = getElementContent(xmlElement, "INCLINATION") as Double
-        val raOfAscNode = getElementContent(xmlElement, "RA_OF_ASC_NODE") as Double
-        val argOfPericenter = getElementContent(xmlElement, "ARG_OF_PERICENTER") as Double
-        val meanAnomaly = getElementContent(xmlElement, "MEAN_ANOMALY") as Double
+        val mean_motion = getElementContent(xmlElement, "MEAN_MOTION").toDouble()
+        val eccentricity = getElementContent(xmlElement, "ECCENTRICITY").toDouble()
+        val inclination = getElementContent(xmlElement, "INCLINATION").toDouble()
+        val raOfAscNode = getElementContent(xmlElement, "RA_OF_ASC_NODE").toDouble()
+        val argOfPericenter = getElementContent(xmlElement, "ARG_OF_PERICENTER").toDouble()
+        val meanAnomaly = getElementContent(xmlElement, "MEAN_ANOMALY").toDouble()
         return Satellite(name, id, epoch, mean_motion, eccentricity, inclination,
                             raOfAscNode, argOfPericenter, meanAnomaly)
     }
