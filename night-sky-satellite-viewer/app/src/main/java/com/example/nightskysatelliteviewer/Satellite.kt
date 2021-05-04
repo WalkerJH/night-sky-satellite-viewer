@@ -11,4 +11,6 @@ class Satellite(val name: String, val id: String, val epoch: Date,
                 val revAtEpoch: Int, val bStar: Double,
                 val meanMotionDot: Double, val meanMotionDDot: Double) {
 
+
+
 }
